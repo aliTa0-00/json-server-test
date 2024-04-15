@@ -5,7 +5,7 @@ const Cat = () => {
   const [cat, setCat] = useState([]);
   const [product, setProduct] = useState([]);
 
-  // show category data 
+  // show category data ( btns ) 
   useEffect(() => {
     try {
       axios
@@ -18,13 +18,14 @@ const Cat = () => {
     }
   }, []);
 
-
+// fetch products ومن ثم بقوم بعمل id بجيب  category btn لما اضغط على 
   const handelClickBtn = async (id) => {
     await axios
       .get(`http://localhost:3000/categories/${id}?_embed=products`)
       .then((data) => setProduct(data.data.products));
   };
-  
+
+  // categories btn show
   const showCat = cat.map((item) => (
     <>
       <button
